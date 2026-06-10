@@ -177,7 +177,7 @@ const itemVariants: Variants = {
 // ─── Main Component ─────────────────────────────────────────────────────────
 export default function ComingSoon() {
     // Target date set by user (June 12, 2026)
-    const [launchDate] = useState(() => new Date("2026-06-12T00:00:00"));
+    const [launchDate] = useState(() => new Date("2026-06-12T10:30:00"));
     const countdown = useCountdown(launchDate);
     const particles = useParticles(45);
     const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });
