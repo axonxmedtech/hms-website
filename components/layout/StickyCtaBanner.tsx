@@ -2,9 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ArrowRight } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { X } from "lucide-react";
+import BookDemoButton from "@/components/ui/BookDemoButton";
 
 export default function StickyCtaBanner() {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,15 +35,13 @@ export default function StickyCtaBanner() {
               </p>
             </div>
             <div className="flex items-center gap-2">
-              <a
+              <BookDemoButton
                 href="#cta"
-                className={cn(
-                  buttonVariants({ size: "sm" }),
-                  "bg-healthcare-accent hover:bg-healthcare-accent/90 text-white font-semibold rounded-full shadow-md whitespace-nowrap"
-                )}
+                size="sm"
+                className="whitespace-nowrap"
               >
-                Book Demo <ArrowRight className="ml-1 h-3.5 w-3.5" />
-              </a>
+                Book Demo
+              </BookDemoButton>
               <button
                 onClick={() => setIsDismissed(true)}
                 className="flex-shrink-0 p-1.5 rounded-full text-healthcare-muted hover:bg-healthcare-border/50 transition-colors"

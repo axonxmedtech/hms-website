@@ -14,8 +14,7 @@ import {
   ClipboardList,
   CalendarCheck,
   Shield,
-  ShieldCheck,
-  Server,
+  Database,
   KeyRound,
   Fingerprint,
   Clock,
@@ -26,6 +25,8 @@ import {
   AlertTriangle,
   CheckCircle2,
   Building2,
+  Baby,
+  Bone,
   type LucideIcon,
 } from "lucide-react";
 
@@ -40,30 +41,28 @@ export const NAV_LINKS = [
 
 // ─── HERO STATS ────────────────────────────────────────────────────────────
 export const HERO_STATS = [
-  { value: 500, suffix: "+", label: "Hospitals Onboarded" },
-  { value: 2, suffix: "M+", label: "Patients Managed" },
-  { value: 99.9, suffix: "%", label: "Uptime Guaranteed" },
+  { value: 9, suffix: "+", label: "Modules Built" },
+  { value: 4, suffix: "", label: "Role-Based Dashboards" },
   { value: 72, suffix: "hrs", label: "Average Go-Live" },
+  { value: 100, suffix: "%", label: "Cloud Based" },
 ] as const;
 
-// ─── TRUST LOGOS ───────────────────────────────────────────────────────────
-export const TRUST_LOGOS = [
-  "Apollo Hospitals",
-  "Fortis Healthcare",
-  "Max Healthcare",
-  "Manipal Hospitals",
-  "Narayana Health",
-  "Medanta",
-  "AIIMS Partner",
-  "Columbia Asia",
-] as const;
+// ─── HOSPITAL TYPES (replaces trust logos) ─────────────────────────────────
+export interface HospitalType {
+  name: string;
+  icon: LucideIcon;
+}
 
-export const COMPLIANCE_BADGES = [
-  { name: "HIPAA Compliant", icon: ShieldCheck },
-  { name: "ISO 27001", icon: Shield },
-  { name: "SOC 2 Type II", icon: Lock },
-  { name: "GDPR Ready", icon: Fingerprint },
-] as const;
+export const HOSPITAL_TYPES: HospitalType[] = [
+  { name: "Multi-Specialty Hospitals", icon: Building2 },
+  { name: "Nursing Homes", icon: Bed },
+  { name: "Polyclinics & Clinics", icon: Stethoscope },
+  { name: "Hospital + Pharmacy", icon: Pill },
+  { name: "Maternity Hospitals", icon: Baby },
+  { name: "Orthopedic Centers", icon: Bone },
+  { name: "Eye & ENT Hospitals", icon: Eye },
+  { name: "Hospital Chains", icon: LayoutDashboard },
+];
 
 // ─── PROBLEMS ──────────────────────────────────────────────────────────────
 export interface Problem {
@@ -346,14 +345,14 @@ export const SECURITY_FEATURES: SecurityFeature[] = [
     description: "Every action logged with timestamp, user, and IP address for full accountability.",
   },
   {
-    icon: Server,
-    title: "SOC 2 Infrastructure",
-    description: "Hosted on SOC 2 compliant cloud infrastructure with 99.9% uptime SLA.",
+    icon: Database,
+    title: "Multi-Tenant Data Isolation",
+    description: "Each hospital's data is completely isolated at the database level — not just the application layer.",
   },
   {
     icon: Shield,
-    title: "HIPAA Compliance",
-    description: "Built from the ground up to meet HIPAA privacy and security requirements.",
+    title: "Automatic Backups",
+    description: "Continuous automated backups with point-in-time recovery ensure your data is never lost.",
   },
 ];
 
@@ -404,39 +403,35 @@ export const BENEFITS: Benefit[] = [
   },
 ];
 
-// ─── TESTIMONIALS ──────────────────────────────────────────────────────────
-export interface Testimonial {
-  quote: string;
-  author: string;
-  role: string;
-  organization: string;
-  rating: number;
+// ─── USE CASE PERSONAS (replaces testimonials) ────────────────────────────
+export interface UseCasePersona {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+  features: string[];
 }
 
-export const TESTIMONIALS: Testimonial[] = [
+export const USE_CASE_PERSONAS: UseCasePersona[] = [
   {
-    quote:
-      "AxonX Medtech transformed how we operate. Our billing errors dropped to near-zero, and doctors actually enjoy using the system. The 72-hour go-live wasn't just marketing — they delivered.",
-    author: "Dr. Rajesh Sharma",
-    role: "Medical Director",
-    organization: "Sunrise Multi-Specialty Hospital",
-    rating: 5,
+    icon: LayoutDashboard,
+    title: "Hospital Administrators",
+    description:
+      "One dashboard to manage beds, revenue, staff, and compliance. Get real-time visibility across every department without chasing reports.",
+    features: ["Revenue analytics", "Staff management", "Bed occupancy tracking", "Audit trails"],
   },
   {
-    quote:
-      "We evaluated 12 HMS solutions before choosing AxonX Medtech. The role-based access control was the deciding factor. Our pharmacy team, receptionists, and doctors each get exactly what they need — nothing more.",
-    author: "Priya Mehta",
-    role: "Hospital Administrator",
-    organization: "CarePlus Medical Center",
-    rating: 5,
+    icon: Stethoscope,
+    title: "Doctors & Clinicians",
+    description:
+      "Focus on patients, not paperwork. Digital prescriptions, patient histories, and clinical notes — all in one place.",
+    features: ["E-Prescriptions", "Patient history", "Digital notes", "Lab integration"],
   },
   {
-    quote:
-      "The real-time bed management alone saved us 2 hours of phone calls every day. Add the integrated pharmacy module and automated billing, and we recovered our investment in the first month.",
-    author: "Dr. Anil Kapoor",
-    role: "Chief Operating Officer",
-    organization: "LifeLine Hospital Group",
-    rating: 5,
+    icon: Pill,
+    title: "Pharmacy Managers",
+    description:
+      "Real-time inventory with batch tracking, expiry alerts, and integrated POS billing. Never run out of critical medicines again.",
+    features: ["Stock tracking", "Expiry alerts", "Batch management", "POS billing"],
   },
 ];
 
@@ -480,7 +475,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: "Is patient data secure and compliant?",
     answer:
-      "Security is foundational, not an add-on. AxonX Medtech uses AES-256 encryption, TLS 1.3, JWT authentication with automatic session expiry, BCrypt password hashing, role-based access enforcement, complete audit logging, and multi-tenant data isolation. We are HIPAA compliant and ISO 27001 certified.",
+      "Security is foundational, not an add-on. AxonX Medtech uses AES-256 encryption, TLS 1.3, JWT authentication with automatic session expiry, BCrypt password hashing, role-based access enforcement, complete audit logging, and multi-tenant data isolation. We follow industry best practices and are actively working toward formal certifications.",
   },
   {
     question: "Do I need to install any software or maintain servers?",
@@ -504,11 +499,9 @@ export const FOOTER_LINKS = {
     { label: "Careers", href: "#" },
     { label: "Blog", href: "#" },
     { label: "Contact", href: "#cta" },
-    { label: "Partners", href: "#" },
   ],
   resources: [
     { label: "Documentation", href: "#" },
-    { label: "API Reference", href: "#" },
     { label: "System Status", href: "#" },
     { label: "Release Notes", href: "#" },
     { label: "Help Center", href: "#" },
@@ -516,7 +509,6 @@ export const FOOTER_LINKS = {
   legal: [
     { label: "Privacy Policy", href: "#" },
     { label: "Terms of Service", href: "#" },
-    { label: "HIPAA Compliance", href: "#" },
     { label: "Data Processing Agreement", href: "#" },
   ],
 } as const;
