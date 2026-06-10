@@ -14,7 +14,7 @@ export default function FaqSection() {
   const [ref, isVisible] = useScrollAnimation();
 
   return (
-    <section ref={ref} id="faq" className="py-20 lg:py-28 bg-healthcare-bg">
+    <section ref={ref} id="faq" className="py-20 lg:py-28 bg-healthcare-bg scroll-mt-20 lg:scroll-mt-24">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div

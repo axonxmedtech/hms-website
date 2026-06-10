@@ -3,26 +3,52 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, Send, Sparkles } from "lucide-react";
+import { CheckCircle2, Send, Sparkles } from "lucide-react";
+import BookDemoButton from "@/components/ui/BookDemoButton";
 
 export default function CtaSection() {
   const [ref, isVisible] = useScrollAnimation();
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
-    setTimeout(() => {
+
+    const formData = new FormData(e.currentTarget);
+    const payload = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      hospital: formData.get("hospital"),
+      phone: formData.get("phone"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        const errorData = await response.json();
+        alert(errorData.error || "Failed to submit demo request. Please try again.");
+      }
+    } catch (err) {
+      console.error("Submission error:", err);
+      alert("An error occurred. Please check your network connection.");
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 1500);
+    }
   };
 
   return (
-    <section ref={ref} id="cta" className="py-20 lg:py-28 cta-gradient relative overflow-hidden">
+    <section ref={ref} id="cta" className="py-20 lg:py-28 cta-gradient relative overflow-hidden scroll-mt-20 lg:scroll-mt-24">
       {/* Decorative */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-healthcare-accent/10 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-[300px] h-[300px] rounded-full bg-white/5 blur-3xl pointer-events-none" />
@@ -46,14 +72,14 @@ export default function CtaSection() {
             </h2>
 
             <p className="mt-5 text-lg text-blue-100/80 leading-relaxed max-w-lg">
-              Join 500+ hospitals that have transformed their operations with AxonX Medtech. Book a
-              personalized demo and see exactly how it works for your setup.
+              See how AxonX Medtech can transform your hospital operations. Book a
+              personalized demo and experience the platform firsthand.
             </p>
 
             <div className="mt-8 space-y-3">
               {[
                 "Personalized demo for your hospital type",
-                "Complete ROI analysis included",
+                "See the product with your use case",
                 "Go live in as fast as 72 hours",
                 "Dedicated onboarding manager assigned",
                 "No credit card or commitment required",
@@ -93,6 +119,7 @@ export default function CtaSection() {
                         </label>
                         <input
                           id="cta-name"
+                          name="name"
                           type="text"
                           required
                           placeholder="Dr. Rajesh Sharma"
@@ -108,6 +135,7 @@ export default function CtaSection() {
                         </label>
                         <input
                           id="cta-email"
+                          name="email"
                           type="email"
                           required
                           placeholder="admin@hospital.com"
@@ -126,6 +154,7 @@ export default function CtaSection() {
                         </label>
                         <input
                           id="cta-hospital"
+                          name="hospital"
                           type="text"
                           required
                           placeholder="Sunrise Hospital"
@@ -141,6 +170,7 @@ export default function CtaSection() {
                         </label>
                         <input
                           id="cta-phone"
+                          name="phone"
                           type="tel"
                           placeholder="+91 98765 43210"
                           className="w-full px-4 py-3 rounded-xl border border-healthcare-border bg-healthcare-bg text-sm text-healthcare-text placeholder:text-healthcare-muted/50 focus:outline-none focus:ring-2 focus:ring-healthcare-accent/30 focus:border-healthcare-accent transition-all"
@@ -157,29 +187,20 @@ export default function CtaSection() {
                       </label>
                       <textarea
                         id="cta-message"
+                        name="message"
                         rows={3}
                         placeholder="Tell us about your hospital and what you're looking for..."
                         className="w-full px-4 py-3 rounded-xl border border-healthcare-border bg-healthcare-bg text-sm text-healthcare-text placeholder:text-healthcare-muted/50 focus:outline-none focus:ring-2 focus:ring-healthcare-accent/30 focus:border-healthcare-accent transition-all resize-none"
                       />
                     </div>
 
-                    <Button
+                    <BookDemoButton
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-healthcare-accent hover:bg-healthcare-accent/90 text-white font-bold py-6 rounded-xl shadow-lg shadow-healthcare-accent/20 transition-all hover:shadow-xl hover:shadow-healthcare-accent/30 text-base disabled:opacity-70"
+                      className="w-full justify-center text-base"
                     >
-                      {isSubmitting ? (
-                        <>
-                          <span className="inline-block h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-                          Booking Your Demo...
-                        </>
-                      ) : (
-                        <>
-                          Book My Free Demo
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </>
-                      )}
-                    </Button>
+                      {isSubmitting ? "Booking Your Demo..." : "Book My Free Demo"}
+                    </BookDemoButton>
 
                     <p className="text-xs text-healthcare-muted text-center pt-1">
                       No credit card required • Free setup assistance • Cancel anytime

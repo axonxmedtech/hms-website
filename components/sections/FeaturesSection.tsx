@@ -11,7 +11,7 @@ export default function FeaturesSection() {
   const [activeRole, setActiveRole] = useState(0);
 
   return (
-    <section ref={ref} id="features" className="py-20 lg:py-28 bg-white">
+    <section ref={ref} id="features" className="py-20 lg:py-28 bg-white scroll-mt-20 lg:scroll-mt-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
