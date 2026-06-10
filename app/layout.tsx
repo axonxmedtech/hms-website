@@ -18,9 +18,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://axonx.health"),
   title: "AxonX Medtech — The Operating System for Modern Hospitals",
   description:
-    "AxonX Medtech is an enterprise-grade Hospital Management System that unifies OPD, IPD, pharmacy, billing, and patient management into one intelligent platform. Trusted by 500+ hospitals.",
+    "AxonX Medtech is an enterprise-grade Hospital Management System that unifies OPD, IPD, pharmacy, billing, and patient management into one intelligent platform. Go live in 72 hours.",
   keywords: [
     "hospital management system",
     "HMS software",
@@ -32,8 +33,8 @@ export const metadata: Metadata = {
     "medical billing software",
     "patient management system",
     "healthcare SaaS",
-    "HIPAA compliant HMS",
     "cloud hospital software",
+    "hospital management India",
   ],
   authors: [{ name: "AxonX Medtech" }],
   creator: "AxonX Medtech",
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
     siteName: "AxonX Medtech",
     title: "AxonX Medtech — The Operating System for Modern Hospitals",
     description:
-      "Enterprise-grade Hospital Management System. Unify OPD, IPD, pharmacy, billing, and patient management. Trusted by 500+ hospitals. Go live in 72 hours.",
+      "Enterprise-grade Hospital Management System. Unify OPD, IPD, pharmacy, billing, and patient management. Go live in 72 hours.",
     images: [
       {
         url: "/og-image.png",
@@ -102,12 +103,6 @@ export default function RootLayout({
                 price: "0",
                 priceCurrency: "USD",
                 description: "Free demo available",
-              },
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "4.9",
-                ratingCount: "523",
-                bestRating: "5",
               },
               provider: {
                 "@type": "Organization",

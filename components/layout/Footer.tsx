@@ -23,22 +23,22 @@ export default function Footer() {
             </p>
             <div className="space-y-3">
               <a
-                href="mailto:hello@axonx.health"
+                href="mailto:axonxmedtech@gmail.com"
                 className="flex items-center gap-2.5 text-sm text-slate-400 hover:text-healthcare-accent transition-colors"
               >
                 <Mail className="h-4 w-4 flex-shrink-0" />
-                hello@axonx.health
+                axonxmedtech@gmail.com
               </a>
               <a
-                href="tel:+18001234567"
+                href="tel:+919022915865"
                 className="flex items-center gap-2.5 text-sm text-slate-400 hover:text-healthcare-accent transition-colors"
               >
                 <Phone className="h-4 w-4 flex-shrink-0" />
-                1-800-AXONX
+                +91 90229 15865
               </a>
               <div className="flex items-center gap-2.5 text-sm text-slate-400">
                 <MapPin className="h-4 w-4 flex-shrink-0" />
-                San Francisco, CA
+                Shikrapur, Tal-shirur, Dist - Pune
               </div>
             </div>
           </div>
@@ -133,9 +133,7 @@ export default function Footer() {
               All systems operational
             </span>
             <span className="text-xs text-slate-600">|</span>
-            <span className="text-xs text-slate-500">HIPAA Compliant</span>
-            <span className="text-xs text-slate-600">|</span>
-            <span className="text-xs text-slate-500">SOC 2 Certified</span>
+            <span className="text-xs text-slate-500">Security-first architecture</span>
           </div>
         </div>
       </div>

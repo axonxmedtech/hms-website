@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Activity } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { NAV_LINKS } from "@/lib/data";
+import BookDemoButton from "@/components/ui/BookDemoButton";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -59,23 +59,9 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:flex lg:items-center lg:gap-3">
-            <a
-              href="#cta"
-              className="text-sm font-medium text-healthcare-muted hover:text-healthcare-primary transition-colors"
-            >
-              Sign In
-            </a>
-            <a
-              href="#cta"
-              className={cn(
-                buttonVariants({ variant: "default" }),
-                "bg-healthcare-accent hover:bg-healthcare-accent/90 text-white font-semibold px-6 rounded-full shadow-md shadow-healthcare-accent/20 transition-all hover:shadow-lg hover:shadow-healthcare-accent/30 hover:-translate-y-0.5"
-              )}
-            >
-              Book a Demo
-            </a>
+          {/* Desktop CTA — Book Demo only, no Sign In */}
+          <div className="hidden lg:flex lg:items-center">
+            <BookDemoButton href="#cta" size="sm">Book Free Demo</BookDemoButton>
           </div>
 
           {/* Mobile Menu Button */}
@@ -114,24 +100,14 @@ export default function Navbar() {
                   {link.label}
                 </motion.a>
               ))}
-              <div className="pt-3 border-t border-healthcare-border mt-3 space-y-2">
-                <a
+              <div className="pt-3 border-t border-healthcare-border mt-3">
+                <BookDemoButton
                   href="#cta"
                   onClick={() => setIsMobileOpen(false)}
-                  className="block px-4 py-3 text-base font-medium text-healthcare-muted text-center rounded-lg hover:bg-healthcare-bg transition-colors"
+                  className="w-full justify-center"
                 >
-                  Sign In
-                </a>
-                <a
-                  href="#cta"
-                  onClick={() => setIsMobileOpen(false)}
-                  className={cn(
-                    buttonVariants({ variant: "default" }),
-                    "w-full bg-healthcare-accent hover:bg-healthcare-accent/90 text-white font-semibold rounded-full shadow-md justify-center"
-                  )}
-                >
-                  Book a Demo
-                </a>
+                  Book Free Demo
+                </BookDemoButton>
               </div>
             </div>
           </motion.div>
