@@ -10,48 +10,36 @@ const SCREENSHOT_TABS = [
     id: "dashboard",
     label: "Dashboard",
     icon: Monitor,
+    image: "/admin_dashboard.png",
     content: {
       title: "Real-Time Hospital Dashboard",
       description: "Complete operational visibility at a glance",
-      cards: [
-        { label: "Active OPD", value: "47", color: "bg-blue-50 text-blue-600" },
-        { label: "IPD Occupied", value: "58/80", color: "bg-purple-50 text-purple-600" },
-        { label: "Today Revenue", value: "₹8.4L", color: "bg-emerald-50 text-emerald-600" },
-        { label: "Pending Bills", value: "12", color: "bg-amber-50 text-amber-600" },
-      ],
-      features: ["Department-wise statistics", "Real-time patient flow", "Revenue tracking", "Staff availability"],
+      cards: [],
+      features: [],
     },
   },
   {
     id: "patients",
     label: "Patient Records",
     icon: Tablet,
+    image: "/patient_list.png",
     content: {
       title: "Unified Patient Records",
       description: "Complete medical history in one view",
-      cards: [
-        { label: "Total Patients", value: "12,847", color: "bg-blue-50 text-blue-600" },
-        { label: "New Today", value: "34", color: "bg-teal-50 text-teal-600" },
-        { label: "Follow-ups", value: "18", color: "bg-indigo-50 text-indigo-600" },
-        { label: "Discharged", value: "7", color: "bg-green-50 text-green-600" },
-      ],
-      features: ["Visit history timeline", "Lab results integration", "Document uploads", "Smart search"],
+      cards: [],
+      features: [],
     },
   },
   {
     id: "pharmacy",
     label: "Pharmacy",
     icon: Pill,
+    image: "/pharmacy_dashboard.png",
     content: {
       title: "Pharmacy Management",
       description: "Inventory control with zero stockouts",
-      cards: [
-        { label: "Total Medicines", value: "2,340", color: "bg-teal-50 text-teal-600" },
-        { label: "Low Stock", value: "8", color: "bg-red-50 text-red-600" },
-        { label: "Expiring Soon", value: "15", color: "bg-amber-50 text-amber-600" },
-        { label: "Today Sales", value: "₹1.2L", color: "bg-emerald-50 text-emerald-600" },
-      ],
-      features: ["Batch tracking", "Expiry management", "Auto reorder alerts", "GST billing"],
+      cards: [],
+      features: [],
     },
   },
   {
@@ -147,7 +135,7 @@ export default function ProductScreenshots() {
               </div>
             </div>
 
-            {/* Dashboard content */}
+            {/* Screenshot content */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
@@ -155,87 +143,98 @@ export default function ProductScreenshots() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="p-6 lg:p-8"
               >
-                {/* Title bar */}
-                <div className="flex items-center justify-between mb-6">
-                  <div>
-                    <h3 className="text-lg font-heading font-bold text-healthcare-text">
-                      {SCREENSHOT_TABS[activeTab].content.title}
-                    </h3>
-                    <p className="text-sm text-healthcare-muted">
-                      {SCREENSHOT_TABS[activeTab].content.description}
-                    </p>
-                  </div>
-                  <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-bold rounded-full bg-healthcare-success/10 text-healthcare-success">
-                    <span className="h-1.5 w-1.5 rounded-full bg-healthcare-success animate-pulse" />
-                    Live
-                  </span>
-                </div>
-
-                {/* Stats cards */}
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                  {SCREENSHOT_TABS[activeTab].content.cards.map((card, i) => (
-                    <motion.div
-                      key={card.label}
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.05 * i, duration: 0.3 }}
-                      className={`rounded-xl p-4 ${card.color.split(" ")[0]}`}
-                    >
-                      <p className="text-xs text-healthcare-muted font-medium mb-1">{card.label}</p>
-                      <p className={`text-2xl font-heading font-bold ${card.color.split(" ")[1]}`}>
-                        {card.value}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Chart area */}
-                <div className="grid lg:grid-cols-3 gap-4">
-                  <div className="lg:col-span-2 rounded-xl border border-healthcare-border p-4">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-sm font-semibold text-healthcare-text">Trends</span>
-                      <span className="text-xs text-healthcare-muted">Last 7 days</span>
+                {"image" in SCREENSHOT_TABS[activeTab] ? (
+                  // Real screenshot image for dashboard / patients / pharmacy
+                  <img
+                    src={(SCREENSHOT_TABS[activeTab] as { image: string }).image}
+                    alt={SCREENSHOT_TABS[activeTab].content.title}
+                    className="w-full h-auto block"
+                  />
+                ) : (
+                  // Analytics: keep the generated UI
+                  <div className="p-6 lg:p-8">
+                    {/* Title bar */}
+                    <div className="flex items-center justify-between mb-6">
+                      <div>
+                        <h3 className="text-lg font-heading font-bold text-healthcare-text">
+                          {SCREENSHOT_TABS[activeTab].content.title}
+                        </h3>
+                        <p className="text-sm text-healthcare-muted">
+                          {SCREENSHOT_TABS[activeTab].content.description}
+                        </p>
+                      </div>
+                      <span className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-bold rounded-full bg-healthcare-success/10 text-healthcare-success">
+                        <span className="h-1.5 w-1.5 rounded-full bg-healthcare-success animate-pulse" />
+                        Live
+                      </span>
                     </div>
-                    <div className="flex items-end gap-2 h-32">
-                      {[45, 62, 55, 78, 65, 82, 72, 88, 70, 92, 80, 95].map((h, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ height: 0 }}
-                          animate={{ height: `${h}%` }}
-                          transition={{ delay: 0.05 * i, duration: 0.5, ease: "easeOut" }}
-                          className="flex-1 rounded-t-sm"
-                          style={{
-                            backgroundColor:
-                              i >= 10
-                                ? "#00BFA5"
-                                : `rgba(15, 76, 129, ${0.2 + (h / 100) * 0.6})`,
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </div>
 
-                  {/* Quick features */}
-                  <div className="rounded-xl border border-healthcare-border p-4">
-                    <span className="text-sm font-semibold text-healthcare-text block mb-3">Quick Access</span>
-                    <div className="space-y-2">
-                      {SCREENSHOT_TABS[activeTab].content.features.map((f, i) => (
+                    {/* Stats cards */}
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                      {SCREENSHOT_TABS[activeTab].content.cards.map((card, i) => (
                         <motion.div
-                          key={f}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.1 * i, duration: 0.3 }}
-                          className="flex items-center gap-2 py-2 px-3 rounded-lg bg-healthcare-bg text-sm text-healthcare-text"
+                          key={card.label}
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.05 * i, duration: 0.3 }}
+                          className={`rounded-xl p-4 ${card.color.split(" ")[0]}`}
                         >
-                          <span className="h-1.5 w-1.5 rounded-full bg-healthcare-accent" />
-                          {f}
+                          <p className="text-xs text-healthcare-muted font-medium mb-1">{card.label}</p>
+                          <p className={`text-2xl font-heading font-bold ${card.color.split(" ")[1]}`}>
+                            {card.value}
+                          </p>
                         </motion.div>
                       ))}
                     </div>
+
+                    {/* Chart area */}
+                    <div className="grid lg:grid-cols-3 gap-4">
+                      <div className="lg:col-span-2 rounded-xl border border-healthcare-border p-4">
+                        <div className="flex items-center justify-between mb-4">
+                          <span className="text-sm font-semibold text-healthcare-text">Trends</span>
+                          <span className="text-xs text-healthcare-muted">Last 7 days</span>
+                        </div>
+                        <div className="flex items-end gap-2 h-32">
+                          {[45, 62, 55, 78, 65, 82, 72, 88, 70, 92, 80, 95].map((h, i) => (
+                            <motion.div
+                              key={i}
+                              initial={{ height: 0 }}
+                              animate={{ height: `${h}%` }}
+                              transition={{ delay: 0.05 * i, duration: 0.5, ease: "easeOut" }}
+                              className="flex-1 rounded-t-sm"
+                              style={{
+                                backgroundColor:
+                                  i >= 10
+                                    ? "#00BFA5"
+                                    : `rgba(15, 76, 129, ${0.2 + (h / 100) * 0.6})`,
+                              }}
+                            />
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Quick features */}
+                      <div className="rounded-xl border border-healthcare-border p-4">
+                        <span className="text-sm font-semibold text-healthcare-text block mb-3">Quick Access</span>
+                        <div className="space-y-2">
+                          {SCREENSHOT_TABS[activeTab].content.features.map((f, i) => (
+                            <motion.div
+                              key={f}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ delay: 0.1 * i, duration: 0.3 }}
+                              className="flex items-center gap-2 py-2 px-3 rounded-lg bg-healthcare-bg text-sm text-healthcare-text"
+                            >
+                              <span className="h-1.5 w-1.5 rounded-full bg-healthcare-accent" />
+                              {f}
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
+                )}
               </motion.div>
             </AnimatePresence>
           </div>
