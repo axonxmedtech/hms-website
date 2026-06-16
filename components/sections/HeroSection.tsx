@@ -112,50 +112,12 @@ export default function HeroSection() {
                   </div>
                 </div>
 
-                {/* Dashboard content */}
-                <div className="p-4 sm:p-6 space-y-4">
-                  {/* Top stat cards */}
-                  <div className="grid grid-cols-3 gap-3">
-                    {[
-                      { label: "Today's Patients", value: "127", change: "+12%", color: "bg-blue-50 text-healthcare-primary" },
-                      { label: "Beds Available", value: "23/80", change: "71%", color: "bg-teal-50 text-healthcare-accent" },
-                      { label: "Revenue Today", value: "₹4.2L", change: "+8%", color: "bg-emerald-50 text-healthcare-success" },
-                    ].map((stat) => (
-                      <div key={stat.label} className={`rounded-lg p-3 ${stat.color.split(" ")[0]}`}>
-                        <p className="text-[10px] sm:text-xs text-healthcare-muted font-medium">{stat.label}</p>
-                        <p className={`text-lg sm:text-xl font-heading font-bold ${stat.color.split(" ")[1]}`}>{stat.value}</p>
-                        <span className="text-[10px] text-healthcare-success font-semibold">↑ {stat.change}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Chart placeholder */}
-                  <div className="rounded-lg border border-healthcare-border p-3">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs font-semibold text-healthcare-text">Patient Flow — Weekly</span>
-                      <span className="text-[10px] text-healthcare-accent font-bold px-2 py-0.5 bg-healthcare-accent/10 rounded-full">Live</span>
-                    </div>
-                    <div className="flex items-end gap-1.5 h-20">
-                      {[40, 65, 55, 80, 60, 75, 90, 70, 85, 60, 95, 75].map((h, i) => (
-                        <div key={i} className="flex-1 rounded-t transition-all hover:bg-healthcare-accent" style={{ height: `${h}%`, backgroundColor: i === 10 ? "#00BFA5" : `rgba(15, 76, 129, ${0.15 + (h / 100) * 0.5})` }} />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Recent activity */}
-                  <div className="space-y-2">
-                    {[
-                      { text: "Dr. Sharma completed consultation — OPD #247", time: "2 min ago" },
-                      { text: "Bed 12A assigned to patient Ravi Kumar", time: "5 min ago" },
-                      { text: "Pharmacy: Low stock alert — Paracetamol 500mg", time: "12 min ago" },
-                    ].map((item) => (
-                      <div key={item.text} className="flex items-center justify-between text-xs py-2 border-b border-healthcare-border/50 last:border-0">
-                        <span className="text-healthcare-text truncate pr-4">{item.text}</span>
-                        <span className="text-healthcare-muted whitespace-nowrap text-[10px]">{item.time}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                {/* Dashboard screenshot */}
+                <img
+                  src="/admin_dashboard.png"
+                  alt="AxonX Medtech Admin Dashboard"
+                  className="w-full h-auto block"
+                />
               </div>
             </div>
 
