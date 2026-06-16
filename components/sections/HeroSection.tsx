@@ -1,11 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Play, CheckCircle2 } from "lucide-react";
+import { Play, CheckCircle2 } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { HERO_STATS, TICKER_ITEMS } from "@/lib/data";
 import { useScrollAnimation, useCountAnimation } from "@/hooks/useScrollAnimation";
+import BookDemoButton from "@/components/ui/BookDemoButton";
 
 function StatCounter({ value, suffix, label }: { value: number; suffix: string; label: string }) {
   const [ref, isVisible] = useScrollAnimation();
@@ -46,7 +47,7 @@ export default function HeroSection() {
             >
               <span className="h-1.5 w-1.5 rounded-full bg-healthcare-success animate-pulse" />
               <span className="text-xs font-semibold text-healthcare-primary uppercase tracking-wider">
-                Trusted by 500+ Hospitals
+                Built for Indian Healthcare 🇮🇳
               </span>
             </motion.div>
 
@@ -61,23 +62,13 @@ export default function HeroSection() {
             </p>
 
             {/* CTA buttons */}
-            <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <a
-                href="#cta"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "bg-healthcare-accent hover:bg-healthcare-accent/90 text-white font-bold px-8 rounded-full shadow-lg shadow-healthcare-accent/25 transition-all hover:shadow-xl hover:shadow-healthcare-accent/30 hover:-translate-y-0.5 text-base"
-                )}
-              >
+            <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-3">
+              <BookDemoButton href="#cta" size="lg">
                 Book a Free Demo
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
+              </BookDemoButton>
               <a
                 href="#features"
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "lg" }),
-                  "rounded-full border-healthcare-border text-healthcare-text hover:bg-healthcare-bg font-semibold text-base"
-                )}
+                className="inline-flex items-center justify-center rounded-full border-2 border-healthcare-border bg-transparent text-healthcare-text hover:bg-healthcare-bg hover:border-healthcare-accent/30 font-heading font-extrabold text-base px-8 h-14 transition-all duration-300 active:scale-[0.98] select-none"
               >
                 <Play className="mr-2 h-4 w-4 text-healthcare-accent" />
                 Watch Product Tour
@@ -141,8 +132,8 @@ export default function HeroSection() {
                 <CheckCircle2 className="h-4 w-4 text-healthcare-success" />
               </div>
               <div>
-                <p className="text-xs font-bold text-healthcare-text">HIPAA Compliant</p>
-                <p className="text-[10px] text-healthcare-muted">Enterprise-grade security</p>
+                <p className="text-xs font-bold text-healthcare-text">Cloud Native</p>
+                <p className="text-[10px] text-healthcare-muted">Zero infrastructure needed</p>
               </div>
             </motion.div>
 

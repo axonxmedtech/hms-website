@@ -9,7 +9,7 @@ export default function SecuritySection() {
   const [ref, isVisible] = useScrollAnimation();
 
   return (
-    <section ref={ref} id="security" className="py-20 lg:py-28 security-gradient relative overflow-hidden">
+    <section ref={ref} id="security" className="py-20 lg:py-28 security-gradient relative overflow-hidden scroll-mt-20 lg:scroll-mt-24">
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-healthcare-accent/5 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-healthcare-secondary/5 blur-3xl pointer-events-none" />
@@ -78,8 +78,8 @@ export default function SecuritySection() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
               { value: "AES-256", label: "Encryption Standard" },
-              { value: "99.9%", label: "Uptime SLA" },
-              { value: "0", label: "Data Breaches" },
+              { value: "Cloud", label: "Native Architecture" },
+              { value: "Isolated", label: "Multi-Tenant Data" },
               { value: "24/7", label: "Security Monitoring" },
             ].map((stat) => (
               <div key={stat.label}>
