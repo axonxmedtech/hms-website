@@ -22,6 +22,11 @@ export const metadata: Metadata = {
   title: "AxonX Medtech — The Operating System for Modern Hospitals",
   description:
     "AxonX Medtech is an enterprise-grade Hospital Management System that unifies OPD, IPD, pharmacy, billing, and patient management into one intelligent platform. Go live in 72 hours.",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
   keywords: [
     "hospital management system",
     "HMS software",

@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Activity } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/data";
 import BookDemoButton from "@/components/ui/BookDemoButton";
 
@@ -38,12 +38,22 @@ export default function Navbar() {
         <div className="flex h-16 items-center justify-between lg:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2.5 group" aria-label="AxonX Medtech Home">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-healthcare-primary text-white transition-transform group-hover:scale-105">
-              <Activity className="h-5 w-5" />
-            </div>
-            <span className="text-xl font-heading font-bold text-healthcare-text">
-              AxonX <span className="text-healthcare-primary">Medtech</span>
-            </span>
+            <Image
+              src="/icon.png"
+              alt="AxonX Medtech Icon"
+              width={35}
+              height={36}
+              priority
+              className="h-8 md:h-9 w-auto object-contain transition-transform group-hover:scale-105"
+            />
+            <Image
+              src="/logo.png"
+              alt="AxonX Medtech Logo"
+              width={177}
+              height={36}
+              priority
+              className="h-8 md:h-9 w-auto object-contain transition-transform group-hover:scale-[1.02]"
+            />
           </a>
 
           {/* Desktop Nav */}
