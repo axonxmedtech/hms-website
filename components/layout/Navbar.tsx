@@ -41,10 +41,10 @@ export default function Navbar() {
             <Image
               src="/icon.png"
               alt="AxonX Medtech Icon"
-              width={35}
-              height={36}
+              width={40}
+              height={40}
               priority
-              className="h-8 md:h-9 w-auto object-contain transition-transform group-hover:scale-105"
+              className="h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105"
             />
             <Image
               src="/logo.png"
@@ -52,7 +52,7 @@ export default function Navbar() {
               width={177}
               height={36}
               priority
-              className="h-8 md:h-9 w-auto object-contain transition-transform group-hover:scale-[1.02]"
+              className="h-6 md:h-7 w-auto object-contain transition-transform group-hover:scale-[1.02]"
             />
           </a>
 
