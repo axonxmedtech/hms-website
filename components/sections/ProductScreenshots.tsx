@@ -105,7 +105,7 @@ export default function ProductScreenshots() {
                 }`}
               >
                 <Icon className="h-4 w-4" />
-                {tab.label}
+                <span className="hidden sm:inline">{tab.label}</span>
               </button>
             );
           })}
@@ -126,9 +126,9 @@ export default function ProductScreenshots() {
                 <div className="h-3 w-3 rounded-full bg-yellow-400" />
                 <div className="h-3 w-3 rounded-full bg-green-400" />
               </div>
-              <div className="flex-1 mx-8">
-                <div className="h-7 bg-white rounded-lg border border-healthcare-border flex items-center px-4">
-                  <span className="text-xs text-healthcare-muted">
+              <div className="flex-1 mx-3 sm:mx-8">
+                <div className="h-7 bg-white rounded-lg border border-healthcare-border flex items-center px-3">
+                  <span className="text-xs text-healthcare-muted truncate">
                     app.axonx.health/{SCREENSHOT_TABS[activeTab].id}
                   </span>
                 </div>

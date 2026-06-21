@@ -51,7 +51,7 @@ export default function HeroSection() {
               </span>
             </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-extrabold text-healthcare-text leading-[0.95] tracking-tight">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-extrabold text-healthcare-text leading-[0.95] tracking-tight">
               The Operating System for{" "}
               <span className="gradient-text">Modern Hospitals</span>
             </h1>
@@ -159,9 +159,9 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.5 }}
-          className="mt-16 lg:mt-24 py-10 px-8 rounded-2xl bg-white/60 backdrop-blur-sm border border-healthcare-border/50 shadow-sm"
+          className="mt-16 lg:mt-24 py-8 sm:py-10 px-4 sm:px-8 rounded-2xl bg-white/60 backdrop-blur-sm border border-healthcare-border/50 shadow-sm"
         >
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
             {HERO_STATS.map((stat) => (
               <StatCounter
                 key={stat.label}

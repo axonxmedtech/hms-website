@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Activity, Mail, Phone, MapPin } from "lucide-react";
 import { FOOTER_LINKS } from "@/lib/data";
 
@@ -6,16 +7,26 @@ export default function Footer() {
     <footer className="bg-healthcare-text text-white" role="contentinfo">
       {/* Main Footer */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-8">
           {/* Brand Column */}
-          <div className="lg:col-span-2">
-            <a href="#" className="flex items-center gap-2.5 mb-5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-healthcare-accent text-white">
-                <Activity className="h-5 w-5" />
-              </div>
-              <span className="text-xl font-heading font-bold text-white">
-                AxonX <span className="text-healthcare-accent">Medtech</span>
-              </span>
+          <div className="sm:col-span-2 lg:col-span-2">
+            <a href="#" className="flex items-center gap-2.5 group" aria-label="AxonX Medtech Home">
+              <Image
+                src="/icon.png"
+                alt="AxonX Medtech Icon"
+                width={40}
+                height={40}
+                priority
+                className="h-9 md:h-10 w-auto object-contain transition-transform group-hover:scale-105"
+              />
+              <Image
+                src="/logo.png"
+                alt="AxonX Medtech Logo"
+                width={177}
+                height={36}
+                priority
+                className="h-6 md:h-7 w-auto object-contain transition-transform group-hover:scale-[1.02]"
+              />
             </a>
             <p className="text-sm text-slate-400 leading-relaxed max-w-xs mb-6">
               The operating system for modern hospitals. Unifying patient care, operations, and

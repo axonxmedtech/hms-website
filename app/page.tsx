@@ -1,3 +1,4 @@
+import UnderDevelopment from "@/components/layout/UnderDevelopment";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import StickyCtaBanner from "@/components/layout/StickyCtaBanner";
@@ -18,6 +19,7 @@ export default function Home() {
   // Restore original content by uncommenting below and removing ComingSoon:
   return (
     <>
+      <UnderDevelopment />
       <Navbar />
       <main>
         <HeroSection />

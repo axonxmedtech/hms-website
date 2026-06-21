@@ -27,6 +27,7 @@ export default function StickyCtaBanner() {
           exit={{ y: 100, opacity: 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="fixed bottom-0 left-0 right-0 z-40 glass border-t border-healthcare-border shadow-lg lg:hidden"
+          style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
         >
           <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between gap-3">
             <div className="flex-1 min-w-0">
