@@ -1,3 +1,4 @@
+import UnderDevelopment from "@/components/layout/UnderDevelopment";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import StickyCtaBanner from "@/components/layout/StickyCtaBanner";
@@ -16,6 +17,7 @@ import CtaSection from "@/components/sections/CtaSection";
 export default function Home() {
   return (
     <>
+      <UnderDevelopment />
       <Navbar />
       <main>
         <HeroSection />
